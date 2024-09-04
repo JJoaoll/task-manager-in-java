@@ -2,6 +2,7 @@ import Time.Date;
 import Time.Session;
 
 import java.util.Optional;
+
 public class DayTask extends Task {
   private Date appointedDay; 
 
@@ -29,5 +30,7 @@ public class DayTask extends Task {
     this.appointedDay = newAppointedDay;  
   }
 
-
+  // getters:
+  public Date getAppointedDate() { return this.appointedDay; }
+        
 }

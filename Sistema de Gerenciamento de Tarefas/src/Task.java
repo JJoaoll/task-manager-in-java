@@ -1,9 +1,7 @@
-import Time.Time;
-import Time.Date;
 import java.util.Optional;
 
 import Time.Session;
-abstract class Task {
+public class Task {
   final int id;
   final Session creationTime;
   /* final? */ protected Session conclusionTime;

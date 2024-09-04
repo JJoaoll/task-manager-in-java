@@ -9,8 +9,16 @@ public class DeadLinedTask extends Task {
 
 
 
-    public DeadLinedTask(int newID, Session newCreationTime, Session newConclusionTime, String newDescription, int newPriority) {
+    public DeadLinedTask(int newID, Session newCreationTime, Session newConclusionTime, String newDescription,
+        int newPriority, Session newDeadLine) {
         super(newID, newCreationTime, newConclusionTime, newDescription, newPriority);
+        this.deadLine = newDeadLine; 
+    }
+
+    public DeadLinedTask(Task newTask, Session newDeadLine) {
+      super(newTask.getID(), newTask.getCreationTime(), newTask.getConclusionTime(), 
+          newTask.getDescription(), newTask.getPriority());
+      this.deadLine = newDeadLine; 
     }
 
     public Session getDeadLine() { return this.deadLine; }

@@ -5,22 +5,25 @@ import Time.Date;
 import Time.Session;
 
 public class Main {
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        Date date1 = new Date(16, 8, 2024);
-        Date date2 = new Date(23, 8, 2024);
-        Time time1 = new Time(12,31,0);
-        Time time2 = new Time(0,0,0);
-        Session ses1 = new Session(date1, time1);
-        Session ses2 = new Session(date2, time2);
+    Date date1 = new Date(23, 9, 2024);
+    Date date2 = new Date(22, 9, 2024);
+    Time time1 = new Time(12,31,0);
+    Time time2 = new Time(0,0,0);
+    Session ses1 = new Session(date1, time1);
+    Session ses2 = new Session(date2, time2);
 
-        System.out.println("timming1: "+ ses1.toString());
-        System.out.println("timming2: "+ ses2.toString());
-        System.out.println("difference: "+ ses1.absoluteMinusInSession(ses2).toString());
-        System.out.println("difference: "+ ses1.absoluteMinusInString(ses2));
+    System.out.println("timming1: "+ ses1.toString());
+    System.out.println("dia da semana: "+date1.getWeekDay());
+    System.out.println("timming2: "+ ses2.toString());
+    System.out.println("dia da semana: "+date2.getWeekDay());
+
+    System.out.println("difference: "+ ses1.absoluteMinusInSession(ses2).toString());
+    System.out.println("difference: "+ ses1.absoluteMinusInString(ses2));
 
 
-    }
+  }
 }
 
 /* O Sistema de Gerenciamento de Tarefas é um projeto interessante que envolve a criação de uma aplicação para organizar e monitorar tarefas pessoais ou de equipe. Esse sistema pode ser bastante simples ou incrivelmente robusto, dependendo de quantas funcionalidades você deseja implementar. Aqui está uma descrição mais detalhada e algumas sugestões sobre como você pode estruturá-lo:

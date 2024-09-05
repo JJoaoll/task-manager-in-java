@@ -1,4 +1,5 @@
 package Time;
+import Time.Session;
 
 public class Date {
     private int days;
@@ -88,6 +89,18 @@ public class Date {
     public int getDays() { return this.days; }
     public Date tomorrow() { return new Date(this.days + 1, this.year); }
     public Boolean getLeapYearity() { return this.isLeapYear; }
+
+    // GAMBIARRA FDS (podia ter um enum chamado WeekDay aqui tbm)
+    public int getWeekDay(){
+      Date example = new Date(1, 1, 24); 
+      int wd = 1; 
+      Session s1 = new Session(example, new Time(0,0,0));
+      Session s2 = new Session(new Date(this), new Time(0,0,0));
+
+      wd += s1.absoluteMinusInDays(s2) + 3; // gambiarra a gente aceita, sla pq 3 :#
+      return wd%7;
+
+    } // return 0 to Sunday
 
 // 100SETTERS.
 

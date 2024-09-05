@@ -10,10 +10,15 @@ public class DayTask extends MaybeTimmedTask {
   // ------------------------------
   public DayTask(Task newTask, Optional<Time> newRightTimming, Date newApptdDay) {
     super(newTask, newRightTimming);
-    this.appointedDay = newApptdDay;
+    this.appointedDay = new Date (newApptdDay);
   }  
 
+  public DayTask(DayTask copyMe) {
+    super(copyMe.getTask(), copyMe.getRightTimming());
+    this.appointedDay = getAppointedDate();
+  }
+
   // getters:
-  public Date getAppointedDate() { return this.appointedDay; }
+  public Date getAppointedDate() { return new Date(this.appointedDay); }
         
 }

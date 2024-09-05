@@ -10,15 +10,17 @@ public class Task {
   
   // CONSTRUTORES:
   // -----------------------------------------
-  
+
   public Task(int newID, Session newCreationTime, String newDesc, int newPriort) {  
-    this.id = newID; this.creationTime = newCreationTime;
-    this.description = newDesc; this.priority = newPriort; 
+    this.id = newID; this.creationTime = new Session(newCreationTime);
+    this.description = newDesc; this.priority = newPriort;
+    this.conclusionTime = new Session(); 
   }
 
   public Task(Task newTask) { 
-   this.id = newTask.getID(); this.creationTime = newTask.getCreationTime();
-   this.description = newTask.getDescription(); this.priority = newTask.getPriority();
+    this.id = newTask.getID(); this.creationTime = new Session (newTask.getCreationTime());
+    this.description = newTask.getDescription(); this.priority = newTask.getPriority();
+    this.conclusionTime = new Session(); 
   }   
 
   // GETTER'S
@@ -27,11 +29,19 @@ public class Task {
   public Session getCreationTime() { return creationTime; }
   public Session getConclusionTime() { return conclusionTime; }
   public int getPriority() { return priority; }
+  protected Task getTask() {
+    Task returnMe = new Task(this.id, new Session(this.creationTime),
+        this.description, this.priority);
+    returnMe.setConclusionTime(new Session(this.conclusionTime));
+    
+    return returnMe;
+  }
 
   // SETTER'S
 
   public void setDescription(String newDescription) { description = newDescription; }
   public void setPriority(int newPriority) { priority = newPriority; }
+  public void setConclusionTime(Session newConclTime) { this.conclusionTime = new Session(newConclTime); }
 
 
 

@@ -12,13 +12,26 @@ public class Time {
     private int minute;
     private int hour;
 
+
+    // CONSTRUCTORS:
+    // -------------
+    
+    // Default
     public Time(int newHour, int newMin, int newSec){
         hour = newHour;  minute = newMin;  second = newSec;
         fixTime();
     }
 
-    // Time Null!
+    // Null
     public Time(){ hour = -1; minute = -1; second = -1; }
+
+    // Clone
+    public Time(Time copyMe) {
+      this.second = copyMe.getSec();
+      this.minute = copyMe.getMin();
+      this.hour = copyMe.getHour();
+    }
+
 
     // getters:
     public int getHour(){ return hour; }

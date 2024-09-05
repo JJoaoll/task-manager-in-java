@@ -16,9 +16,14 @@ public class Session {
         date = new Date(-1, -1);
     }
 
+    public Session(Session copyMe) {
+      this.date = new Date(copyMe.getDate());
+      this.time = new Time(copyMe.getTime());
+    }
+
     // Getters:
-    public Time getTime() { return time; }
-    public Date getDate() { return date; }
+    public Time getTime() { return new Time(time); }
+    public Date getDate() { return new Date(date); }
     
     // Setters:
     public void setTime(Time newTime) { time = newTime; }

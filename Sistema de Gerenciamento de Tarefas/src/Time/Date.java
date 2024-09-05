@@ -27,6 +27,12 @@ public class Date {
         this.isLeapYear = leapYearTest(this.year);
     }
 
+    public Date(Date copyMe) {
+      this.days = copyMe.getDays();
+      this.year = copyMe.getYear();
+      this.isLeapYear = copyMe.getLeapYearity();
+    }
+
 // ------------------------------------------------------------------------------
 // Métodos:
 // ------------------------------------------------------------------------------
@@ -81,6 +87,7 @@ public class Date {
     public int getYear() { return this.year; }
     public int getDays() { return this.days; }
     public Date tomorrow() { return new Date(this.days + 1, this.year); }
+    public Boolean getLeapYearity() { return this.isLeapYear; }
 
 // 100SETTERS.
 

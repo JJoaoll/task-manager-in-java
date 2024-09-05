@@ -1,6 +1,6 @@
 import Time.Time;
 import java.util.Optional;
-
+import java.util.Arrays;
 public class WeeklyTask extends MaybeTimmedTask {
 
   // Falta achar uma solucao melhor
@@ -14,15 +14,35 @@ public class WeeklyTask extends MaybeTimmedTask {
   // Friday -----> 5
   // Saturday ---> 6   
 
+  // ------------------------------------------------------------------------------
+  // CONSTRUCTOR'S
+  // ------------------------------------------------------------------------------
+
   public WeeklyTask(Task newTask, Optional<Time> newRightTimming, boolean[] newWeekDays) {
-    super(newTask, newRightTimming);
+    super(newTask, newRightTimming);  
     // This throw makes me unproud, should do better
     if (newWeekDays.length != 7) {
       throw new IllegalArgumentException("Devem ser 7 valores booleanos para os dias da semana");
     }    
-    System.arraycopy(newWeekDays, 0, this.weekDays, 0, 7);
-
+    System.arraycopy(newWeekDays, 0, this.weekDays, 0, 7);    
   }
+
+  public WeeklyTask(WeeklyTask copyMe) {
+    super(new Task(copyMe.getTask()), copyMe.getRightTimming());
+    this.weekDays = copyMe.getWeekDays();    
+  }
+
+  // ------------------------------------------------------------------------------
+  // GETTER'S
+  // ------------------------------------------------------------------------------
+
+  public boolean [] getWeekDays() { 
+    if (this.weekDays.length != 7) {
+      throw new IllegalArgumentException("For some reason a weekDays has more than 7 slots");
+    }    
+    return Arrays.copyOf(this.weekDays, 7); 
+  }
+
 }
 
 

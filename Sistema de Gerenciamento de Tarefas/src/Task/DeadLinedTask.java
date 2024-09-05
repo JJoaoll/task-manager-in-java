@@ -9,10 +9,16 @@ public class DeadLinedTask extends Task {
     // ----------------------
     public DeadLinedTask(Task newTask, Session newDeadLine) {
       super(newTask); 
-      this.deadLine = newDeadLine; 
+      this.deadLine = new Session(newDeadLine);
     }
 
-    public Session getDeadLine() { return this.deadLine; }
+    public DeadLinedTask(DeadLinedTask copyMe) {
+      super(copyMe.getTask());
+      this.deadLine = copyMe.getDeadLine();
+    }
+
+    public Session getDeadLine() { return new Session(this.deadLine); }
+    
 
     public Session getRemainingTime(){
         // Obtendo a data e hora local

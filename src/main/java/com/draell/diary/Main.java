@@ -6,6 +6,13 @@ import java.util.LinkedList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.draell.diary.entity.User;
+import com.draell.diary.repository.UserRepository;
 
 import com.draell.diary.Calendar;
 
@@ -22,8 +29,22 @@ import com.draell.diary.task.WeeklyTask;
 @SpringBootApplication
 public class Main {
   public static void main(String[] args) {
-    SpringApplication.run(Main.class, args); 
+    ApplicationContext context = SpringApplication.run(Main.class, args);
 
+    // Obtendo o repositório UserRepository do contexto
+    UserRepository userRepository = context.getBean(UserRepository.class);
+
+    // Criar e salvar um novo usuário
+    User user = new User("LoginUsuario", "testPassword");
+    userRepository.save(user);
+
+    // Buscar e exibir o usuário
+    Optional<User> foundUser = userRepository.findById(user.getId());
+    if (foundUser.isPresent()) {
+      System.out.println("Usuário encontrado: " + foundUser.get().getLogin());
+    } else {
+      System.out.println("Usuário não encontrado.");
+    }
 
     Date date1 = new Date(23, 9, 2024);
     Date date2 = new Date(22, 9, 2024);

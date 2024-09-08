@@ -1,11 +1,12 @@
-com/draell/diary/time/Time.class
 com/draell/diary/time/Date.class
-com/draell/diary/Main.class
-com/draell/diary/Calendar.class
+com/draell/diary/entity/User.class
 com/draell/diary/time/Session.class
 com/draell/diary/User.class
-com/draell/diary/task/DeadLinedTask.class
-com/draell/diary/task/Task.class
 com/draell/diary/task/WeeklyTask.class
 com/draell/diary/task/DayTask.class
 com/draell/diary/task/MaybeTimmedTask.class
+com/draell/diary/time/Time.class
+com/draell/diary/Main.class
+com/draell/diary/Calendar.class
+com/draell/diary/task/DeadLinedTask.class
+com/draell/diary/task/Task.class

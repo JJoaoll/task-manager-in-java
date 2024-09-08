@@ -1,5 +1,6 @@
 package com.draell.diary;
 
+import java.util.List;
 import java.util.LinkedList;
 import java.util.Optional;
 import com.draell.diary.task.Task;
@@ -11,11 +12,13 @@ import com.draell.diary.time.Date;
 
 public class Calendar {
   private int year;
-  private LinkedList<Task>[][] tasks; 
-  
+  private List<Task>[][] tasks; 
+
   public Calendar(int newYear, LinkedList<Task> newTasks) {
     this.tasks = createCalendarStructure(newYear);
     this.year = newYear;
+
+    this.addTasks(newTasks);
   }
 
   private LinkedList<Task>[][] createCalendarStructure(int thatYear) {
@@ -36,17 +39,19 @@ public class Calendar {
       calendarStructure[1] = new LinkedList[29]; 
     else
       calendarStructure[1] = new LinkedList[28];
-
-    for(LinkedList<Task>[] l1 : calendarStructure) 
-      for(LinkedList<Task> l2 : l1)
-        l2 = new LinkedList<Task>();    
+    
+    for(int i = 0; i < 12; i++) {
+      for(int j = 0; j < calendarStructure[i].length; j++) {
+        calendarStructure[i][j] = new LinkedList<Task>();
+      } 
+    }     
 
     return calendarStructure;
   }
 
   private boolean isALeapYear(int testMe) {    
-    if (year % 4 == 0)      
-      return year % 100 != 0 || year % 400 == 0;
+    if (testMe % 4 == 0)      
+      return testMe % 100 != 0 || testMe % 400 == 0;
     else 
       return false;
   }
@@ -58,6 +63,7 @@ public class Calendar {
   }
 
   public void addTask(Task t) {
+    // can be optimezed using isPresent(d -> this.addTask(t, d))
     if(t instanceof DayTask && t.getSDate().isPresent()) {          
       Date d = t.getSDate().orElse(new Date());
       this.addTask(t, d);        
@@ -96,8 +102,14 @@ public class Calendar {
     return;
   }
 
-    
-  
+  public void printTaskDatesTEST() {
+    for(int i = 0; i < 12; i++) {
+      for(int j = 0; j < tasks[i].length; j++) {
+        if(tasks[i][j].size() > 0)
+          System.out.println("DateCheck:  "+(j+1)+"/"+(i+1)+"/"+this.year);
+      }
+    }
+  }
 
 
 

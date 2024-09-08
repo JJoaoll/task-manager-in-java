@@ -1,9 +1,19 @@
 package com.draell.diary; 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Optional;
+import java.util.LinkedList;
+
+import com.draell.diary.Calendar;
+
 import com.draell.diary.time.Time;
 import com.draell.diary.time.Date;
 import com.draell.diary.time.Session;
+
+import com.draell.diary.task.Task;
+import com.draell.diary.task.MaybeTimmedTask;
+import com.draell.diary.task.DayTask;
+import com.draell.diary.task.WeeklyTask;
 
 public class Main {
   public static void main(String[] args) {
@@ -23,7 +33,22 @@ public class Main {
     System.out.println("difference: "+ ses1.absoluteMinusInSession(ses2).toString());
     System.out.println("difference: "+ ses1.absoluteMinusInString(ses2));
 
+    System.out.println("---------------------------------------------------------------------------------------");    
 
+    Task task1 = new Task(1, ses1, " ", 1); 
+    Task task2 = new Task(2, ses2, " ", 1);
+    
+    //             DOM | SEG | TER | QUA | QUI | SEX | SAT
+    boolean[] wds = {false,false,false,false,false,false,false}; 
+  
+    Task dayTask = new DayTask(task1, Optional.empty(), date1); 
+    Task weeklyTask = new WeeklyTask(task2, Optional.empty(), wds);
+
+    LinkedList<Task> tasks = new LinkedList<Task>(); 
+
+    Calendar testCalendar = new Calendar(date1.getYear(), tasks);
+
+    testCalendar.printTaskDatesTEST();
   }
 }
 

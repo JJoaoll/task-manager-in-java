@@ -31,18 +31,20 @@ public class WeeklyTask extends MaybeTimmedTask {
 
   public WeeklyTask(WeeklyTask copyMe) {
     super(new Task(copyMe.getTask()), copyMe.getRightTimming());
-    this.weekDays = copyMe.getWeekDays();    
+    boolean[] d = {false, false, false, false, false, false, false}; 
+    this.weekDays = copyMe.getWeekDays().orElse(d);    
   }
 
   // ------------------------------------------------------------------------------
   // GETTER'S
   // ------------------------------------------------------------------------------
 
-  public boolean [] getWeekDays() { 
+  @Override
+  public Optional<boolean[]> getWeekDays() { 
     if (this.weekDays.length != 7) {
       throw new IllegalArgumentException("For some reason a weekDays has more than 7 slots");
     }    
-    return Arrays.copyOf(this.weekDays, 7); 
+    return Optional.of(Arrays.copyOf(this.weekDays, 7)); 
   }
 
 }

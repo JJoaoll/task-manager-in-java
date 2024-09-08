@@ -1,8 +1,10 @@
 package com.draell.diary.task;
 
 import com.draell.diary.time.Session;
+import com.draell.diary.time.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class DeadLinedTask extends Task {
     private Session deadLine;
@@ -21,6 +23,8 @@ public class DeadLinedTask extends Task {
 
     public Session getDeadLine() { return new Session(this.deadLine); }
     
+    @Override
+    public Optional<Date> getSDate() { return Optional.of(new Date(deadLine.getDate())); }
 
     public Session getRemainingTime(){
         // Obtendo a data e hora local

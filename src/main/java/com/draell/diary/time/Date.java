@@ -37,7 +37,7 @@ public class Date {
 // Métodos:
 // ------------------------------------------------------------------------------
 
-    static boolean leapYearTest(int year) {
+   public static boolean leapYearTest(int year) {
         // Verifica se o ano é divisível por 4
         if (year % 4 == 0) {
             // Verifica se o ano não é divisível por 100, a menos que seja divisível por 400

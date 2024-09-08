@@ -22,5 +22,7 @@ public class DayTask extends MaybeTimmedTask {
 
   // getters:
   public Date getAppointedDate() { return new Date(this.appointedDay); }
-        
+
+  @Override
+  public Optional<Date> getSDate() { return Optional.of(new Date(this.appointedDay));}
 }

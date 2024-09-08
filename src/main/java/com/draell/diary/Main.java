@@ -39,12 +39,14 @@ public class Main {
     Task task2 = new Task(2, ses2, " ", 1);
     
     //             DOM | SEG | TER | QUA | QUI | SEX | SAT
-    boolean[] wds = {false,false,false,false,false,false,false}; 
+    boolean[] wds = {false,true,false,true,false,true,false}; 
   
     Task dayTask = new DayTask(task1, Optional.empty(), date1); 
     Task weeklyTask = new WeeklyTask(task2, Optional.empty(), wds);
 
-    LinkedList<Task> tasks = new LinkedList<Task>(); 
+    LinkedList<Task> tasks = new LinkedList<Task>();
+    tasks.addFirst(dayTask); 
+    tasks.addFirst(weeklyTask);
 
     Calendar testCalendar = new Calendar(date1.getYear(), tasks);
 

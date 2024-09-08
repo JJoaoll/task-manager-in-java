@@ -63,6 +63,7 @@ public class Calendar {
   }
 
   public void addTask(Task t) {
+    //System.out.println("Passou aqui");
     // can be optimezed using isPresent(d -> this.addTask(t, d))
     if(t instanceof DayTask && t.getSDate().isPresent()) {          
       Date d = t.getSDate().orElse(new Date());

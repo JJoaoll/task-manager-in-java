@@ -10,3 +10,4 @@ com/draell/diary/Main.class
 com/draell/diary/Calendar.class
 com/draell/diary/task/DeadLinedTask.class
 com/draell/diary/task/Task.class
+com/draell/diary/repository/UserRepository.class

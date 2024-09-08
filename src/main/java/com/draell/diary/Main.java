@@ -4,6 +4,9 @@ package com.draell.diary;
 import java.util.Optional;
 import java.util.LinkedList;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.draell.diary.Calendar;
 
 import com.draell.diary.time.Time;
@@ -15,8 +18,12 @@ import com.draell.diary.task.MaybeTimmedTask;
 import com.draell.diary.task.DayTask;
 import com.draell.diary.task.WeeklyTask;
 
+
+@SpringBootApplication
 public class Main {
   public static void main(String[] args) {
+    SpringApplication.run(Main.class, args); 
+
 
     Date date1 = new Date(23, 9, 2024);
     Date date2 = new Date(22, 9, 2024);

@@ -35,7 +35,7 @@ public class Main {
     UserRepository userRepository = context.getBean(UserRepository.class);
 
     // Criar e salvar um novo usuário
-    User user = new User("LoginUsuario", "testPassword");
+    User user = new User("LoginUsuario", "testPassword", );
     userRepository.save(user);
 
     // Buscar e exibir o usuário

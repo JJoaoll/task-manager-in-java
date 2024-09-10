@@ -2,6 +2,7 @@ package com.draell.diary;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Optional;
+import java.util.List;
 import java.util.LinkedList;
 
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.draell.diary.entity.User;
+import com.draell.diary.models.UserModel;
+import com.draell.diary.models.TaskModel;
 import com.draell.diary.repository.UserRepository;
 
 import com.draell.diary.Calendar;
@@ -34,18 +36,6 @@ public class Main {
     // Obtendo o repositório UserRepository do contexto
     UserRepository userRepository = context.getBean(UserRepository.class);
 
-    // Criar e salvar um novo usuário
-    User user = new User("LoginUsuario", "testPassword", );
-    userRepository.save(user);
-
-    // Buscar e exibir o usuário
-    Optional<User> foundUser = userRepository.findById(user.getId());
-    if (foundUser.isPresent()) {
-      System.out.println("Usuário encontrado: " + foundUser.get().getLogin());
-    } else {
-      System.out.println("Usuário não encontrado.");
-    }
-
     Date date1 = new Date(23, 9, 2024);
     Date date2 = new Date(22, 9, 2024);
     Time time1 = new Time(12,31,0);
@@ -65,10 +55,10 @@ public class Main {
 
     Task task1 = new Task(1, ses1, " ", 1); 
     Task task2 = new Task(2, ses2, " ", 1);
-    
-    //             DOM | SEG | TER | QUA | QUI | SEX | SAT
+
+    //                DOM | SEG | TER | QUA | QUI | SEX | SAT
     boolean[] wds = {false,true,false,true,false,true,false}; 
-  
+
     Task dayTask = new DayTask(task1, Optional.empty(), date1); 
     Task weeklyTask = new WeeklyTask(task2, Optional.empty(), wds);
 
@@ -76,9 +66,28 @@ public class Main {
     tasks.addFirst(dayTask); 
     tasks.addFirst(weeklyTask);
 
-    Calendar testCalendar = new Calendar(date1.getYear(), tasks);
+   Calendar testCalendar = new Calendar(date1.getYear(), tasks);
 
     testCalendar.printTaskDatesTEST();
+
+    TaskModel taskModel = new TaskModel();
+    List<TaskModel> taskModels = new LinkedList<>();
+    // Criar e salvar um novo usuário
+    UserModel user = new UserModel("LoginUsuario", "testPassword", taskModels);
+    userRepository.save(user);
+
+    // Buscar e exibir o usuário
+    Optional<UserModel> foundUser = userRepository.findById(user.getId());
+    if (foundUser.isPresent()) {
+      System.out.println("Usuário encontrado: " + foundUser.get().getLogin());
+    } else {
+      System.out.println("Usuário não encontrado.");
+    }
+
+
+
+
+
   }
 }
 

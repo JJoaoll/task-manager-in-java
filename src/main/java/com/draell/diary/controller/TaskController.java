@@ -1,6 +1,6 @@
 package com.draell.diary.controller;
 
-import com.draell.diary.entity.Task;
+import com.draell.diary.models.TaskModel;
 import com.draell.diary.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +17,23 @@ public class TaskController {
 
     // Cria uma nova tarefa
     @PostMapping
-    public Task createTask(@RequestBody Task task) {
+    public TaskModel createTask(@RequestBody TaskModel task) {
         return taskRepository.save(task);
     }
 
     // Busca uma tarefa pelo ID
     @GetMapping("/{id}")
-    public Task getTaskById(@PathVariable int id) {
-        Optional<Task> task = taskRepository.findById(id);
+    public TaskModel getTaskById(@PathVariable int id) {
+        Optional<TaskModel> task = taskRepository.findById(id);
         return task.orElse(null); // Retorna null se a tarefa não for encontrada
     }
 
     // Atualiza uma tarefa
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable int id, @RequestBody Task updatedTask) {
-        Optional<Task> taskOptional = taskRepository.findById(id);
+    public TaskModel updateTask(@PathVariable int id, @RequestBody TaskModel updatedTask) {
+        Optional<TaskModel> taskOptional = taskRepository.findById(id);
         if (taskOptional.isPresent()) {
-            Task task = taskOptional.get();
+            TaskModel task = taskOptional.get();
 
             task.setDescription(updatedTask.getDescription());
             task.setPriority(updatedTask.getPriority());
@@ -55,7 +55,7 @@ public class TaskController {
 
     // Retorna todas as tarefas
     @GetMapping
-    public List<Task> getAllTasks() {
+    public List<TaskModel> getAllTasks() {
         return taskRepository.findAll();
     }
 }

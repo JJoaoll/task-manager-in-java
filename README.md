@@ -12,3 +12,6 @@ This project is been discontinued, but not canceled.
 For now, i don't have so much time to finish it, so Maybe<Later>. 
 
 
+I think it might become a API
+
+
